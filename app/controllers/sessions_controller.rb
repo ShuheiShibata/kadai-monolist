@@ -1,4 +1,4 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
   def new
   end
 
@@ -20,14 +20,16 @@ class SessionController < ApplicationController
     redirect_to root_url
   end
   
+  private
+  
   def login(email, password)
     @user = User.find_by(email: email)
-    if @user && @user.authentivate(password)
-      #ログイン成功
+    if @user && @user.authenticate(password)
+      # ログイン成功
       session[:user_id] = @user.id
       return true
     else
-      #ログイン失敗
+      # ログイン失敗
       return false
     end
   end
