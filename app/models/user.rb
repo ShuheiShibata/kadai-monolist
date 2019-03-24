@@ -21,7 +21,7 @@ class User < ApplicationRecord
   end
   
   def want?(item)
-    self.want_items.iclude?(item)
+    self.want_items.include?(item)
   end
 end
 
